@@ -1,0 +1,22 @@
+document.addEventListener("DOMContentLoaded", function() {
+  
+    const makeupData = [
+      { produit: "crème de nuit", ingredient: "de l'amande", proprietes: "Hydratant, Anti-âge", origine: "Tunisie et de l'algèrie" },
+      { produit: "Baume à lèvre ", ingredient: "Beurre de karité", proprietes: "Nourrissant, Protecteur", origine: "Tunisie" },
+      { produit: "Vernis", ingredient: "Huile d'olive , Agents de suspension", proprietes: "Fortifiant, Assouplissant", origine: "Tunisie , Italie"}
+    ];
+  
+   
+    const tableBody = document.querySelector("table tbody");
+  
+    
+    makeupData.forEach(function(item) {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${item.produit}</td>
+        <td>${item.ingredient}</td>
+        <td>${item.proprietes}</td>
+        <td>${item.origine}</td>
+      `;
+      tableBody.appendChild(row);
+    });
