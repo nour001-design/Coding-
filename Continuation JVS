@@ -1,0 +1,48 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector('form');
+    const pages = document.querySelectorAll('.page');
+    const nextPageButtons = document.querySelectorAll('.next');
+    const previousPageButtons = document.querySelectorAll('.previous');
+  
+    let currentPageIndex = 0;
+  
+    function showPage(index) {
+      pages.forEach((page, pageIndex) => {
+        if (pageIndex === index) {
+          page.classList.add('active');
+          setTimeout(() => {
+            page.style.opacity = 1;
+            page.style.transform = 'translateX(0)';
+          }, 50);
+        } else {
+          page.classList.remove('active');
+          page.style.opacity = 0;
+          page.style.transform = 'translateX(-20px)';
+        }
+      });
+    }
+  
+    function nextPage() {
+      if (currentPageIndex < pages.length - 1) {
+        currentPageIndex++;
+        showPage(currentPageIndex);
+      }
+    }
+  
+    function previousPage() {
+      if (currentPageIndex > 0) {
+        currentPageIndex--;
+        showPage(currentPageIndex);
+      }
+    }
+  
+    nextPageButtons.forEach(button => {
+      button.addEventListener('click', nextPage);
+    });
+  
+    previousPageButtons.forEach(button => {
+      button.addEventListener('click', previousPage);
+    });
+  
+    showPage(currentPageIndex);
+  });
